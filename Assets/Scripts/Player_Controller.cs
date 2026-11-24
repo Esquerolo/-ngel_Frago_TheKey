@@ -43,7 +43,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
           if (!collectable.isCollected)
             {
                 collectable.isCollected = true;
-                game_Manager.CoinsCollected++;
+                game_Manager.CollectCoint++;
                 Destroy(hit.gameObject);
             }
         }

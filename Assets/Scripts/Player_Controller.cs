@@ -8,6 +8,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float verticalspeed;
     private float horizontalMove;
     private float verticalMove;
+    public float CoinsCollected;
+    public Game_Manager game_Manager; 
 
     private CharacterController CharacterController;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,5 +34,18 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontalMove, verticalspeed, verticalMove);
         CharacterController.Move(direction * Speed * Time.deltaTime);
+    }
+    public void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.CompareTag("Collectable"))
+        {
+            CollectableController collectable = hit.gameObject.GetComponent<CollectableController>();
+          if (!collectable.isCollected)
+            {
+                collectable.isCollected = true;
+                game_Manager.CoinsCollected++;
+                Destroy(hit.gameObject);
+            }
+        }
     }
 }

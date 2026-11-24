@@ -14,9 +14,9 @@ public class Game_Manager : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void Update()
+    private void ColectCoint()
     {
-     
+        CoinsCollected++;
         
     }
 }
